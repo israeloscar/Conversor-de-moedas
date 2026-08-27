@@ -31,28 +31,52 @@ public class Main {
                 System.out.println("1- Euro");
                 System.out.println("2 - Real");
                 System.out.print("Deseja converter Dólar para qual moeda?: ");
-                int escolhaConversao = Integer.parseInt(sc.nextLine());
+                int escolhaConversaoDolar = Integer.parseInt(sc.nextLine());
 
-                switch (escolhaConversao) {
+                switch (escolhaConversaoDolar) {
                     case 1:
                         System.out.print("Quantos dólares? (ex: 32.45): ");
                         double numDolares = Double.parseDouble(sc.nextLine());
 
-                        double resultado = conversor(numDolares, COTACAO_DOLAR, COTACAO_EURO);
-                        System.out.println(numDolares + " dólares em euros: " + String.format("%.2f", resultado)  + " euros");
+                        double conversaoDolarEuro = conversor(numDolares, COTACAO_DOLAR, COTACAO_EURO);
+                        System.out.println(numDolares + " Dólares em Euros: " + String.format("%.2f", conversaoDolarEuro)  + " Euros");
                         break;
                     case 2:
                         System.out.print("Quantos dólares? (ex: 32.45): ");
                         double numeroDolares = Double.parseDouble(sc.nextLine());
 
-                        double conversao = conversor(numeroDolares, COTACAO_DOLAR, COTACAO_REAL);
-                        System.out.println(numeroDolares + " dólares em reais: " + conversao + " reais");
+                        double conversaoDolarReal = conversor(numeroDolares, COTACAO_DOLAR, COTACAO_REAL);
+                        System.out.println(numeroDolares + " Dólares em Reais: " + String.format("%.2f", conversaoDolarReal)  + " Reais");
                         break;
 
 
                 }
             break;
 
+            case 2:
+                System.out.println("1- Dólar");
+                System.out.println("2- Real");
+                System.out.println("Deseja converter Euro para qual moeda?: ");
+                int escolhaConversaoEuro = Integer.parseInt(sc.nextLine());
+
+                switch (escolhaConversaoEuro) {
+                    case 1:
+                        System.out.println("Quantos euros? (ex: 45.50): ");
+                        double numEuros = Double.parseDouble(sc.nextLine());
+
+                        double conversaoEuroDolar = conversor(numEuros, COTACAO_EURO, COTACAO_DOLAR);
+                        System.out.println(numEuros + " Euros em Dólares: " + String.format("%.2f", conversaoEuroDolar) + " Dólares");
+                        break;
+
+                    case 2:
+                        System.out.print("Quantos euros? (ex: 45.50): ");
+                        double numeroEuros = Double.parseDouble(sc.nextLine());
+
+                        double conversaoEuroReal = conversor(numeroEuros, COTACAO_EURO, COTACAO_REAL);
+                        System.out.println(numeroEuros + " Euros em Reais: " + String.format("%.2f", conversaoEuroReal) + " Reais");
+                        break;
+                }
+            break;
 
         }
     }

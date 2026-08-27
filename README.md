@@ -47,9 +47,9 @@ public static double conversor(double valor, double cotacaoOrigem, double cotaca
 
 - [x] Estrutura do menu principal e submenu
 - [x] Conversão a partir do Dólar (Dólar → Euro, Dólar → Real)
-- [ ] Conversão a partir do Euro (Euro → Dólar, Euro → Real)
+- [x] Conversão a partir do Euro (Euro → Dólar, Euro → Real)
 - [ ] Conversão a partir do Real (Real → Dólar, Real → Euro)
-- [ ] Formatar todas as saídas com 2 casas decimais (`String.format("%.2f", ...)`)
+- [x] Formatar todas as saídas com 2 casas decimais (`String.format("%.2f", ...)`)
 
 ## 🚀 Próximos passos (melhorias futuras)
 
