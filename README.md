@@ -1,0 +1,65 @@
+# 💱 ConversorMoedas
+
+Projeto de estudo em Java para praticar lógica de programação, `switch`, métodos e formatação de saída, através de um conversor de moedas via linha de comando (CLI).
+
+## 📋 Sobre o projeto
+
+O programa permite converter valores entre três moedas: **Dólar**, **Euro** e **Real**. O usuário escolhe a moeda de origem em um menu principal, depois a moeda de destino em um submenu, informa o valor e recebe o resultado convertido.
+
+## 🧠 Conceitos praticados
+
+- `Scanner` para entrada de dados
+- `switch` aninhado (menu + submenu)
+- Métodos com parâmetros e retorno (`static double conversor(...)`)
+- Constantes (`static final`)
+- Formatação de saída com `String.format`
+
+## ⚙️ Como funciona a conversão
+
+Todas as cotações são definidas em relação ao **Real**, usado como "moeda-ponte":
+
+```java
+static final double COTACAO_DOLAR = 5.20;
+static final double COTACAO_EURO = 6.07;
+static final double COTACAO_REAL = 1.00;
+```
+
+O método `conversor` faz a conversão em dois passos:
+
+1. Multiplica o valor pela cotação de origem (→ transforma em Reais)
+2. Divide o resultado pela cotação de destino (→ transforma na moeda final)
+
+```java
+public static double conversor(double valor, double cotacaoOrigem, double cotacaoDestino) {
+    double valorMultiplicado = valor * cotacaoOrigem;
+    return valorMultiplicado / cotacaoDestino;
+}
+```
+
+## ▶️ Como executar
+
+1. Clone o repositório
+2. Abra no IntelliJ IDEA (ou outra IDE de sua preferência)
+3. Execute a classe `Main`
+4. Siga o menu interativo no terminal
+
+## 📌 Status atual
+
+- [x] Estrutura do menu principal e submenu
+- [x] Conversão a partir do Dólar (Dólar → Euro, Dólar → Real)
+- [ ] Conversão a partir do Euro (Euro → Dólar, Euro → Real)
+- [ ] Conversão a partir do Real (Real → Dólar, Real → Euro)
+- [ ] Formatar todas as saídas com 2 casas decimais (`String.format("%.2f", ...)`)
+
+## 🚀 Próximos passos (melhorias futuras)
+
+- Adicionar validação de entrada (evitar erro ao digitar texto ou valor negativo)
+- Permitir múltiplas conversões em loop, sem precisar reiniciar o programa
+- Extrair as cotações para um `HashMap<String, Double>` (moeda → valor), deixando o código mais escalável
+- Guardar um histórico das conversões feitas na sessão
+- (Avançado) Buscar cotações reais via API externa, em vez de valores fixos
+
+## 🛠️ Tecnologias
+
+- Java
+- IntelliJ IDEA Community Edition
