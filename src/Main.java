@@ -49,19 +49,20 @@ public class Main {
                         System.out.println(numeroDolares + " Dólares em Reais: " + String.format("%.2f", conversaoDolarReal)  + " Reais");
                         break;
 
-
+                    default:
+                        System.out.println("Opção inválida!");
                 }
             break;
 
             case 2:
                 System.out.println("1- Dólar");
                 System.out.println("2- Real");
-                System.out.println("Deseja converter Euro para qual moeda?: ");
+                System.out.print("Deseja converter Euro para qual moeda?: ");
                 int escolhaConversaoEuro = Integer.parseInt(sc.nextLine());
 
                 switch (escolhaConversaoEuro) {
                     case 1:
-                        System.out.println("Quantos euros? (ex: 45.50): ");
+                        System.out.print("Quantos euros? (ex: 45.50): ");
                         double numEuros = Double.parseDouble(sc.nextLine());
 
                         double conversaoEuroDolar = conversor(numEuros, COTACAO_EURO, COTACAO_DOLAR);
@@ -75,8 +76,43 @@ public class Main {
                         double conversaoEuroReal = conversor(numeroEuros, COTACAO_EURO, COTACAO_REAL);
                         System.out.println(numeroEuros + " Euros em Reais: " + String.format("%.2f", conversaoEuroReal) + " Reais");
                         break;
+
+                    default:
+                        System.out.println("Opção inválida!");
                 }
             break;
+
+            case 3:
+                System.out.println("1- Dólar");
+                System.out.println("2- Euro");
+                System.out.print("Deseja converter Real para qual moeda?: ");
+                int escolhaConversaoReal = Integer.parseInt(sc.nextLine());
+
+                switch (escolhaConversaoReal) {
+                    case 1:
+                        System.out.print("Quantos reais? (ex: 12.50): ");
+                        double numReais = Double.parseDouble(sc.nextLine());
+
+                        double conversaoRealDolar = conversor(numReais, COTACAO_REAL, COTACAO_DOLAR);
+                        System.out.println(numReais + " Reais em Dólares: " + String.format("%.2f", conversaoRealDolar) + " Dólares");
+                        break;
+
+                    case 2:
+                        System.out.print("Quantos reais? (ex: 12.50): ");
+                        double numeroReais = Double.parseDouble(sc.nextLine());
+
+                        double conversaoRealEuro = conversor(numeroReais, COTACAO_REAL, COTACAO_EURO);
+                        System.out.println(numeroReais + " Reais em Euros: " + String.format("%.2f", conversaoRealEuro) + " Euros");
+                        break;
+
+                    default:
+                        System.out.println("Opção inválida!");
+
+                }
+            break;
+
+            default:
+                System.out.println("Opção inválida!");
 
         }
     }
