@@ -15,6 +15,7 @@ O programa permite converter valores entre três moedas: **Dólar**, **Euro** e 
 - Formatação de saída com `String.format`
 - Tratamento de opção inválida com `default`
 - Loop com `do-while` para repetir o menu, com saída controlada via `boolean`
+- Validação de entrada com `try-catch` (`NumberFormatException`) e valor sentinela
 
 ## ⚙️ Como funciona a conversão
 
@@ -54,10 +55,10 @@ public static double conversor(double valor, double cotacaoOrigem, double cotaca
 - [x] Formatar todas as saídas com 2 casas decimais (`String.format("%.2f", ...)`)
 - [x] Tratar opção inválida em todos os menus com `default`
 - [x] Fazer o menu repetir com `do-while`, com opção "0 - Sair" para encerrar
+- [x] Adicionar validação de entrada (métodos `lerInteiros`/`lerDoubles` com try-catch e valor sentinela `-1`)
 
 ## 🚀 Próximos passos (melhorias futuras)
 
-- Adicionar validação de entrada (evitar erro ao digitar texto ou valor negativo)
 - Extrair as cotações para um `HashMap<String, Double>` (moeda → valor), deixando o código mais escalável
 - Guardar um histórico das conversões feitas na sessão
 - (Avançado) Buscar cotações reais via API externa, em vez de valores fixos
