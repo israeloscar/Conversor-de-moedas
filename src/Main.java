@@ -1,13 +1,17 @@
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
 
-    static final double COTACAO_DOLAR = 5.20;
-    static final double COTACAO_EURO = 6.07;
-    static final double COTACAO_REAL = 1.00;
+    static final Map<String, Double> cotacoes = new HashMap<>();
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        cotacoes.put("Dólar", 5.20);
+        cotacoes.put("Euro", 6.07);
+        cotacoes.put("Real", 1.00);
 
         menu(sc);
 
@@ -62,7 +66,7 @@ public class Main {
                                 System.out.println("Você não digitou um número");
                                 break;
                             } else {
-                                double conversaoDolarEuro = conversor(numDolares, COTACAO_DOLAR, COTACAO_EURO);
+                                double conversaoDolarEuro = conversor(numDolares, cotacoes.get("Dólar"), cotacoes.get("Euro"));
                                 System.out.println(numDolares + " Dólares em Euros: " + String.format("%.2f", conversaoDolarEuro) + " Euros");
                                 break;
                             }
@@ -73,7 +77,7 @@ public class Main {
                                 System.out.println("Você não digitou um número");
                                 break;
                             } else {
-                                double conversaoDolarReal = conversor(numeroDolares, COTACAO_DOLAR, COTACAO_REAL);
+                                double conversaoDolarReal = conversor(numeroDolares, cotacoes.get("Dólar"), cotacoes.get("Real"));
                                 System.out.println(numeroDolares + " Dólares em Reais: " + String.format("%.2f", conversaoDolarReal) + " Reais");
                                 break;
                             }
@@ -100,7 +104,7 @@ public class Main {
                                 System.out.println("Você não digitou um número");
                                 break;
                             } else {
-                                double conversaoEuroDolar = conversor(numEuros, COTACAO_EURO, COTACAO_DOLAR);
+                                double conversaoEuroDolar = conversor(numEuros, cotacoes.get("Euro"), cotacoes.get("Dólar"));
                                 System.out.println(numEuros + " Euros em Dólares: " + String.format("%.2f", conversaoEuroDolar) + " Dólares");
                                 break;
                             }
@@ -111,7 +115,7 @@ public class Main {
                                 System.out.println("Você não digitou um número");
                                 break;
                             } else {
-                                double conversaoEuroReal = conversor(numeroEuros, COTACAO_EURO, COTACAO_REAL);
+                                double conversaoEuroReal = conversor(numeroEuros, cotacoes.get("Euro"), cotacoes.get("Real"));
                                 System.out.println(numeroEuros + " Euros em Reais: " + String.format("%.2f", conversaoEuroReal) + " Reais");
                                 break;
                             }
@@ -138,7 +142,7 @@ public class Main {
                                 System.out.println("Você não digitou um número");
                                 break;
                             } else {
-                                double conversaoRealDolar = conversor(numReais, COTACAO_REAL, COTACAO_DOLAR);
+                                double conversaoRealDolar = conversor(numReais, cotacoes.get("Real"), cotacoes.get("Dólar"));
                                 System.out.println(numReais + " Reais em Dólares: " + String.format("%.2f", conversaoRealDolar) + " Dólares");
                                 break;
                             }
@@ -149,7 +153,7 @@ public class Main {
                                 System.out.println("Você não digitou um número");
                                 break;
                             } else {
-                                double conversaoRealEuro = conversor(numeroReais, COTACAO_REAL, COTACAO_EURO);
+                                double conversaoRealEuro = conversor(numeroReais, cotacoes.get("Real"), cotacoes.get("Euro"));
                                 System.out.println(numeroReais + " Reais em Euros: " + String.format("%.2f", conversaoRealEuro) + " Euros");
                                 break;
                             }

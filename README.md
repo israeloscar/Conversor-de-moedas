@@ -16,18 +16,21 @@ O programa permite converter valores entre três moedas: **Dólar**, **Euro** e 
 - Tratamento de opção inválida com `default`
 - Loop com `do-while` para repetir o menu, com saída controlada via `boolean`
 - Validação de entrada com `try-catch` (`NumberFormatException`) e valor sentinela
+- `HashMap<String, Double>` para armazenar as cotações (chave = moeda, valor = cotação)
 
 ## ⚙️ Como funciona a conversão
 
-Todas as cotações são definidas em relação ao **Real**, usado como "moeda-ponte":
+Todas as cotações são definidas em relação ao **Real**, usado como "moeda-ponte", e armazenadas num `HashMap<String, Double>` (chave = nome da moeda, valor = cotação):
 
 ```java
-static final double COTACAO_DOLAR = 5.20;
-static final double COTACAO_EURO = 6.07;
-static final double COTACAO_REAL = 1.00;
+static final Map<String, Double> cotacoes = new HashMap<>();
+// preenchido no main():
+cotacoes.put("Dólar", 5.20);
+cotacoes.put("Euro", 6.07);
+cotacoes.put("Real", 1.00);
 ```
 
-O método `conversor` faz a conversão em dois passos:
+O método `conversor` faz a conversão em dois passos, buscando as cotações no mapa:
 
 1. Multiplica o valor pela cotação de origem (→ transforma em Reais)
 2. Divide o resultado pela cotação de destino (→ transforma na moeda final)
@@ -37,6 +40,9 @@ public static double conversor(double valor, double cotacaoOrigem, double cotaca
     double valorMultiplicado = valor * cotacaoOrigem;
     return valorMultiplicado / cotacaoDestino;
 }
+
+// chamada, por exemplo:
+conversor(numDolares, cotacoes.get("Dólar"), cotacoes.get("Euro"));
 ```
 
 ## ▶️ Como executar
@@ -56,10 +62,11 @@ public static double conversor(double valor, double cotacaoOrigem, double cotaca
 - [x] Tratar opção inválida em todos os menus com `default`
 - [x] Fazer o menu repetir com `do-while`, com opção "0 - Sair" para encerrar
 - [x] Adicionar validação de entrada (métodos `lerInteiros`/`lerDoubles` com try-catch e valor sentinela `-1`)
+- [x] Extrair as cotações para um `HashMap<String, Double>` (moeda → valor), deixando o código mais escalável
 
 ## 🚀 Próximos passos (melhorias futuras)
 
-- Extrair as cotações para um `HashMap<String, Double>` (moeda → valor), deixando o código mais escalável
+- Adicionar a Libra como quarta moeda (agora só precisa de um `cotacoes.put("Libra", ...)` e um novo `case` no menu)
 - Guardar um histórico das conversões feitas na sessão
 - (Avançado) Buscar cotações reais via API externa, em vez de valores fixos
 
