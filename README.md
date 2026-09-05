@@ -4,7 +4,7 @@ Projeto de estudo em Java para praticar lógica de programação, `switch`, mét
 
 ## 📋 Sobre o projeto
 
-O programa permite converter valores entre três moedas: **Dólar**, **Euro** e **Real**. O usuário escolhe a moeda de origem em um menu principal, depois a moeda de destino em um submenu, informa o valor e recebe o resultado convertido.
+O programa permite converter valores entre quatro moedas: **Dólar**, **Euro**, **Real** e **Libra**. O usuário escolhe a moeda de origem em um menu principal, depois a moeda de destino em um submenu, informa o valor e recebe o resultado convertido.
 
 ## 🧠 Conceitos praticados
 
@@ -28,6 +28,7 @@ static final Map<String, Double> cotacoes = new HashMap<>();
 cotacoes.put("Dólar", 5.20);
 cotacoes.put("Euro", 6.07);
 cotacoes.put("Real", 1.00);
+cotacoes.put("Libra", 6.93);
 ```
 
 O método `conversor` faz a conversão em dois passos, buscando as cotações no mapa:
@@ -63,10 +64,11 @@ conversor(numDolares, cotacoes.get("Dólar"), cotacoes.get("Euro"));
 - [x] Fazer o menu repetir com `do-while`, com opção "0 - Sair" para encerrar
 - [x] Adicionar validação de entrada (métodos `lerInteiros`/`lerDoubles` com try-catch e valor sentinela `-1`)
 - [x] Extrair as cotações para um `HashMap<String, Double>` (moeda → valor), deixando o código mais escalável
+- [x] Adicionar a Libra como quarta moeda (Dólar, Euro, Real, Libra — 12 caminhos de conversão)
 
 ## 🚀 Próximos passos (melhorias futuras)
 
-- Adicionar a Libra como quarta moeda (agora só precisa de um `cotacoes.put("Libra", ...)` e um novo `case` no menu)
+- Refatorar o menu para usar array/loop em vez de switch fixo por moeda, reduzindo a repetição de código
 - Guardar um histórico das conversões feitas na sessão
 - (Avançado) Buscar cotações reais via API externa, em vez de valores fixos
 

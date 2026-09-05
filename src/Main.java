@@ -12,6 +12,7 @@ public class Main {
         cotacoes.put("Dólar", 5.20);
         cotacoes.put("Euro", 6.07);
         cotacoes.put("Real", 1.00);
+        cotacoes.put("Libra", 6.93);
 
         menu(sc);
 
@@ -44,9 +45,10 @@ public class Main {
         boolean continuar = true;
 
         do {
-            System.out.println("1 - Dólar");
-            System.out.println("2 - Euro");
-            System.out.println("3 - Real");
+            System.out.println("1 - Dólar($)");
+            System.out.println("2 - Euro(€)");
+            System.out.println("3 - Real(R$)");
+            System.out.println("4 - Libra(£)");
             System.out.println("0 - Sair");
             System.out.print("Escolha a moeda: ");
             int escolha = lerInteiros(sc);
@@ -54,7 +56,8 @@ public class Main {
             switch (escolha) {
                 case 1:
                     System.out.println("1- Euro");
-                    System.out.println("2 - Real");
+                    System.out.println("2- Real");
+                    System.out.println("3- Libra");
                     System.out.print("Deseja converter Dólar para qual moeda?: ");
                     int escolhaConversaoDolar = lerInteiros(sc);
 
@@ -81,6 +84,18 @@ public class Main {
                                 System.out.println(numeroDolares + " Dólares em Reais: " + String.format("%.2f", conversaoDolarReal) + " Reais");
                                 break;
                             }
+
+                        case 3:
+                            System.out.print("Quantos dólares? (ex: 32.45): ");
+                            double numeroDeDolares = lerDoubles(sc);
+                            if (numeroDeDolares == -1) {
+                                System.out.println("Você não digitou um número");
+                                break;
+                            } else {
+                                double conversaoDolarLibra = conversor(numeroDeDolares, cotacoes.get("Dólar"), cotacoes.get("Libra"));
+                                System.out.println(numeroDeDolares + " Dólares em Libras: " + String.format("%.2f", conversaoDolarLibra) + " Libras");
+                                break;
+                            }
                         case -1:
                             System.out.println("Você só pode digitar números!");
                             break;
@@ -93,6 +108,7 @@ public class Main {
                 case 2:
                     System.out.println("1- Dólar");
                     System.out.println("2- Real");
+                    System.out.println("3- Libra");
                     System.out.print("Deseja converter Euro para qual moeda?: ");
                     int escolhaConversaoEuro = lerInteiros(sc);
 
@@ -119,6 +135,19 @@ public class Main {
                                 System.out.println(numeroEuros + " Euros em Reais: " + String.format("%.2f", conversaoEuroReal) + " Reais");
                                 break;
                             }
+
+                        case 3:
+                            System.out.print("Quantos euros? (ex: 45.50): ");
+                            double numeroDeEuros = lerDoubles(sc);
+                            if (numeroDeEuros == -1) {
+                                System.out.println("Você não digitou um número");
+                                break;
+                            } else {
+                                double conversaoEuroLibra = conversor(numeroDeEuros, cotacoes.get("Euro"), cotacoes.get("Libra"));
+                                System.out.println(numeroDeEuros + " Euros em Libras: " + String.format("%.2f", conversaoEuroLibra) + " Libras");
+                                break;
+                            }
+
                         case -1:
                             System.out.println("Você só pode digitar números!");
                             break;
@@ -131,6 +160,7 @@ public class Main {
                 case 3:
                     System.out.println("1- Dólar");
                     System.out.println("2- Euro");
+                    System.out.println("3- Libra");
                     System.out.print("Deseja converter Real para qual moeda?: ");
                     int escolhaConversaoReal = lerInteiros(sc);
 
@@ -157,6 +187,19 @@ public class Main {
                                 System.out.println(numeroReais + " Reais em Euros: " + String.format("%.2f", conversaoRealEuro) + " Euros");
                                 break;
                             }
+
+                        case 3:
+                            System.out.print("Quantos reais? (ex: 12.50): ");
+                            double numeroDeReais = lerDoubles(sc);
+                            if (numeroDeReais == -1) {
+                                System.out.println("Você não digitou um número");
+                                break;
+                            } else {
+                                double conversaoRealLibra = conversor(numeroDeReais, cotacoes.get("Real"), cotacoes.get("Libra"));
+                                System.out.println(numeroDeReais + " Reais em Libras: " + String.format("%.2f", conversaoRealLibra) + " Libras");
+                                break;
+                            }
+
                         case -1:
                             System.out.println("Você só pode digitar números!");
                             break;
@@ -166,6 +209,63 @@ public class Main {
 
                     }
                     break;
+
+                case 4:
+                    System.out.println("1- Dólar");
+                    System.out.println("2- Euro");
+                    System.out.println("3- Real");
+                    System.out.print("Deseja converter Libra para qual moeda?: ");
+                    int escolhaConversaoLibra = lerInteiros(sc);
+
+                    switch (escolhaConversaoLibra) {
+                        case 1:
+                            System.out.print("Quantas libras? (ex: 24.75): ");
+                            double numLibras = lerDoubles(sc);
+                            if (numLibras == -1) {
+                                System.out.println("Você não digitou um número");
+                                break;
+                            } else {
+                                double conversaoLibraDolar = conversor(numLibras, cotacoes.get("Libra"), cotacoes.get("Dólar"));
+                                System.out.println(numLibras + " Libras em Dólares: " + String.format("%.2f", conversaoLibraDolar) + " Dólares");
+                                break;
+                            }
+
+                        case 2:
+                            System.out.print("Quantas libras? (ex: 24.75): ");
+                            double numeroLibras = lerDoubles(sc);
+                            if (numeroLibras == -1) {
+                                System.out.println("Você não digitou um número");
+                                break;
+                            } else {
+                                double conversaoLibraEuro = conversor(numeroLibras, cotacoes.get("Libra"), cotacoes.get("Euro"));
+                                System.out.println(numeroLibras + " Libras em Euros: " + String.format("%.2f", conversaoLibraEuro) + " Euros");
+                                break;
+                            }
+
+                        case 3:
+                            System.out.print("Quantas libras? (ex: 24.75): ");
+                            double numeroDeLibras = lerDoubles(sc);
+                            if (numeroDeLibras == -1) {
+                                System.out.println("Você não digitou um número");
+                                break;
+                            } else {
+                                double conversaoLibraReal = conversor(numeroDeLibras, cotacoes.get("Libra"), cotacoes.get("Real"));
+                                System.out.println(numeroDeLibras + " Libras em Reais: " + String.format("%.2f", conversaoLibraReal) + " Reais");
+                                break;
+                            }
+
+                        case -1:
+                            System.out.println("Você só pode digitar números!");
+                            break;
+
+                        default:
+                            System.out.println("Opção inválida!");
+
+
+
+                    }
+                    break;
+
 
                 case 0:
                     continuar = false;
